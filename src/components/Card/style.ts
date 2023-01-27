@@ -51,10 +51,13 @@ export const Date = styled.div`
   color: #aaa;
 `;
 
-export const LinkButton = styled.div`
+export const LinkArea = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
+`;
+
+export const LinkButton = styled.div`
   color: #3754e2;
   text-decoration: none;
   padding-top: 8px;
