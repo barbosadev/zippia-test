@@ -1,7 +1,7 @@
 import { api } from "@/services/api";
 import { useEffect, useState } from "react";
 
-export const useJobs = () => {
+export function useJobs() {
   const [jobs, setJobs] = useState<any>([]);
   const [filteredJobList, setFilteredJobList] = useState<any>([]);
   const [isByCompany, setIsByCompany] = useState<Boolean>(false);
@@ -80,4 +80,4 @@ export const useJobs = () => {
     isByCompany,
     onlyLastSevenDays,
   };
-};
+}

@@ -5,7 +5,7 @@ import { Card } from "@/components/Card";
 import { Center, CircularProgress } from "@chakra-ui/react";
 import { Banner } from "@/components/Banner";
 
-export default function Home() {
+export default function Jobs() {
   const {
     handleIsByCompany,
     handleOnlyLastSevenDays,
