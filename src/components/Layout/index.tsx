@@ -22,11 +22,9 @@ export const Layout = ({ children }: LayoutProps): React.ReactElement => {
       </header>
 
       <main>{children}</main>
-      <footer>
-        <Footer>
-          <>Victor Barbosa @2023</>
-        </Footer>
-      </footer>
+      <Footer>
+        <>Victor Barbosa @2023</>
+      </Footer>
     </>
   );
 };
