@@ -67,7 +67,7 @@ export const useJobs = () => {
     setOnlyLastSevenDays(!onlyLastSevenDays);
   };
 
-  const removeTags = (string) => {
+  const removeTags = (string: string) => {
     const data = new DOMParser().parseFromString(string, "text/html");
     return data.body.textContent || "";
   };
