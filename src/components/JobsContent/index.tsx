@@ -5,34 +5,33 @@ import { Card } from "@/components/Card";
 import { Center, CircularProgress } from "@chakra-ui/react";
 import { Banner } from "@/components/Banner";
 
-export const JobsContent = () => {
+export const JobsContent = (): React.ReactElement => {
   const {
     handleIsByCompany,
     handleOnlyLastSevenDays,
-    filteredJobList,
     removeTags,
     isByCompany,
     onlyLastSevenDays,
+    filteredList,
   } = useJobs();
 
   return (
     <>
-      <Banner>
-        <>Find your dream job!</>
-      </Banner>
-
+      <Banner>Find your dream job!</Banner>
       <Filters title="Jobs">
-        <>
-          <Button active={isByCompany} onClick={handleIsByCompany}>
-            By Company
-          </Button>
-          <Button active={onlyLastSevenDays} onClick={handleOnlyLastSevenDays}>
-            Last 7 days
-          </Button>
-        </>
+        <Button active={isByCompany} onClick={handleIsByCompany}>
+          By Company
+        </Button>
+        <Button active={onlyLastSevenDays} onClick={handleOnlyLastSevenDays}>
+          Last 7 days
+        </Button>
       </Filters>
-      {filteredJobList.length > 0 ? (
-        filteredJobList.map((job) => (
+      {!filteredList.length ? (
+        <Center h="80vh">
+          <CircularProgress isIndeterminate color="blue" />
+        </Center>
+      ) : (
+        filteredList.map((job) => (
           <Card
             key={job.jobId}
             title={job.jobTitle}
@@ -41,10 +40,6 @@ export const JobsContent = () => {
             date={job.postedDate}
           />
         ))
-      ) : (
-        <Center h="60vh">
-          <CircularProgress isIndeterminate color="blue" />
-        </Center>
       )}
     </>
   );

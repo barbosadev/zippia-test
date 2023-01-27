@@ -1,7 +1,7 @@
 import { Container } from "./style";
 
 interface BannerProps {
-  children: React.ReactElement;
+  children: string;
 }
 
 export const Banner = ({ children }: BannerProps): React.ReactElement => {

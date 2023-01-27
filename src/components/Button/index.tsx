@@ -1,4 +1,4 @@
-import { ActiveButton, Container } from "./style";
+import { Container } from "./style";
 
 interface ButtonProps {
   children: string;
@@ -11,9 +11,9 @@ export function Button({
   onClick,
   active,
 }: ButtonProps): React.ReactElement {
-  return active ? (
-    <ActiveButton onClick={onClick}>{children}</ActiveButton>
-  ) : (
-    <Container onClick={onClick}>{children}</Container>
+  return (
+    <Container active={active} onClick={onClick}>
+      {children}
+    </Container>
   );
 }

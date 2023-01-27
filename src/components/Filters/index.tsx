@@ -1,7 +1,7 @@
 import { ButtonsArea, Container } from "./style";
 
 interface FiltersProps {
-  children: React.ReactElement;
+  children: React.ReactElement[];
   title: string;
 }
 

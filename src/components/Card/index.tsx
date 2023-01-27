@@ -1,5 +1,6 @@
 import { Collapse } from "@chakra-ui/react";
-import { Container, Description, Header, Date } from "./style";
+import { Button } from "../Button";
+import { Container, Description, Header, Date, LinkButton } from "./style";
 import { useCard } from "./useCard";
 
 interface CardProps {
@@ -28,13 +29,13 @@ export const Card = ({
         <Collapse startingHeight={48} in={showMore}>
           {description}
         </Collapse>
-        <a
+        <LinkButton
           onClick={() => {
             setShowMore(!showMore);
           }}
         >
           {showMore ? "See less" : "See more"}
-        </a>
+        </LinkButton>
       </Description>
     </Container>
   );

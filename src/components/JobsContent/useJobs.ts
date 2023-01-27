@@ -12,61 +12,45 @@ interface JobsProps {
 
 export function useJobs() {
   const [jobs, setJobs] = useState<JobsProps[]>([]);
-  const [filteredJobList, setFilteredJobList] = useState<JobsProps[]>([]);
   const [isByCompany, setIsByCompany] = useState<Boolean>(false);
   const [onlyLastSevenDays, setOnlyLastSevenDays] = useState<Boolean>(false);
 
   useEffect(() => {
-    api
-      .post("jobs", {
-        companySkills: true,
-        dismissedListingHashes: [],
-        fetchJobDesc: true,
-        jobTitle: "Business Analyst",
-        locations: [],
-        numJobs: 10,
-        previousListingHashes: [],
-      })
-      .then(({ data }) => {
-        setJobs(data.jobs);
-      });
-  }, []);
-
-  useEffect(() => {
-    const customizeJobList = () => {
-      const newJobList = [...jobs];
-
-      if (isByCompany) {
-        newJobList.sort((a, b) => {
-          if (a.companyName > b.companyName) {
-            return 1;
-          }
-          if (a.companyName < b.companyName) {
-            return -1;
-          }
-          return 0;
-        });
-      }
-
-      if (onlyLastSevenDays) {
-        return newJobList.filter((job) => {
-          return (
-            (Number(new Date()) - Number(new Date(job.postingDate))) /
-              (1000 * 60 * 60 * 24) <
-            7
-          );
-        });
-      }
-
-      return newJobList;
+    const requestPayload = {
+      companySkills: true,
+      dismissedListingHashes: [],
+      fetchJobDesc: true,
+      jobTitle: "Business Analyst",
+      locations: [],
+      numJobs: 10,
+      previousListingHashes: [],
     };
 
-    if (isByCompany || onlyLastSevenDays) {
-      setFilteredJobList(customizeJobList());
-    } else {
-      setFilteredJobList(jobs);
-    }
-  }, [jobs, isByCompany, onlyLastSevenDays]);
+    api.post("jobs", requestPayload).then(({ data }) => {
+      setJobs(data.jobs);
+    });
+  }, []);
+
+  const today = Number(new Date());
+
+  const isLastSevenDays = (job: JobsProps) =>
+    (today - Number(new Date(job.postingDate))) / (1000 * 60 * 60 * 24) < 7;
+
+  const sortByCompany = (a: JobsProps, b: JobsProps) => {
+    if (a.companyName > b.companyName) return 1;
+    if (a.companyName < b.companyName) return -1;
+    return 0;
+  };
+
+  const newList = (): JobsProps[] => {
+    const newJobList = [...jobs];
+    if (isByCompany) return newJobList.sort(sortByCompany);
+    if (onlyLastSevenDays) return newJobList.filter(isLastSevenDays);
+
+    return newJobList;
+  };
+
+  const filteredList = isByCompany || onlyLastSevenDays ? newList() : jobs;
 
   const handleIsByCompany = () => {
     setIsByCompany(!isByCompany);
@@ -84,9 +68,9 @@ export function useJobs() {
   return {
     handleIsByCompany,
     handleOnlyLastSevenDays,
-    filteredJobList,
     removeTags,
     isByCompany,
     onlyLastSevenDays,
+    filteredList,
   };
 }
