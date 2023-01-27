@@ -32,23 +32,15 @@ export const JobsContent = () => {
         </>
       </Filters>
       {filteredJobList.length > 0 ? (
-        filteredJobList.map(
-          (job: {
-            jobId: string;
-            jobTitle: string;
-            companyName: string;
-            jobDescription: string;
-            postedDate: string;
-          }) => (
-            <Card
-              key={job.jobId}
-              title={job.jobTitle}
-              company={job.companyName}
-              description={`${removeTags(job.jobDescription)}`}
-              date={job.postedDate}
-            />
-          )
-        )
+        filteredJobList.map((job) => (
+          <Card
+            key={job.jobId}
+            title={job.jobTitle}
+            company={job.companyName}
+            description={`${removeTags(job.jobDescription)}`}
+            date={job.postedDate}
+          />
+        ))
       ) : (
         <Center h="60vh">
           <CircularProgress isIndeterminate color="blue" />

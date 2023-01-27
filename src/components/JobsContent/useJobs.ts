@@ -1,9 +1,18 @@
 import { api } from "@/services/api";
 import { useEffect, useState } from "react";
 
+interface JobsProps {
+  jobId: string;
+  jobTitle: string;
+  postedDate: string;
+  companyName: string;
+  postingDate: string;
+  jobDescription: string;
+}
+
 export function useJobs() {
-  const [jobs, setJobs] = useState<any>([]);
-  const [filteredJobList, setFilteredJobList] = useState<any>([]);
+  const [jobs, setJobs] = useState<JobsProps[]>([]);
+  const [filteredJobList, setFilteredJobList] = useState<JobsProps[]>([]);
   const [isByCompany, setIsByCompany] = useState<Boolean>(false);
   const [onlyLastSevenDays, setOnlyLastSevenDays] = useState<Boolean>(false);
 
