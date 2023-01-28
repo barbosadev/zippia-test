@@ -30,9 +30,9 @@ export const Container = styled.div`
   padding: 16px;
   margin: 16px;
   word-break: break-word;
-
-  box-shadow: 0px 1px 1px rgba(100, 116, 139, 0.06),
-    0px 1px 2px rgba(100, 116, 139, 0.1);
+  background-color: #f5f5f5;
+  box-shadow: 0px 1px 1px rgba(100, 116, 139, 0.08),
+    0px 1px 2px rgba(100, 116, 139, 0.7);
   border-radius: 8px;
 `;
 
@@ -48,7 +48,7 @@ export const Header = styled.div`
 `;
 
 export const Date = styled.div`
-  color: #aaa;
+  color: #666;
 `;
 
 export const LinkArea = styled.div`
