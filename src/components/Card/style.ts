@@ -8,6 +8,11 @@ export const Container = styled.div`
   box-shadow: 0px 1px 1px rgba(100, 116, 139, 0.07),
     0px 1px 2px rgba(100, 116, 139, 0.7);
   border-radius: 8px;
+
+  h3 {
+    color: #3754e2;
+    font-weight: 800;
+  }
 `;
 
 export const Description = styled.div`
@@ -20,6 +25,7 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 4px;
 `;
 
 export const Date = styled.div`
@@ -41,5 +47,6 @@ export const LinkButton = styled.div`
   text-decoration: none;
   padding-top: 4px;
   cursor: pointer;
+  font-weight: 600;
   font-size: 0.9rem;
 `;
