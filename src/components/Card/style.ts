@@ -19,6 +19,7 @@ export const Description = styled.div`
   margin-top: 8px;
   font-size: 1rem;
   line-height: 1.4;
+  color: #444;
 `;
 
 export const Header = styled.div`
