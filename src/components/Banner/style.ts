@@ -7,5 +7,18 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem 0;
+  flex-direction: column;
+  padding: 6rem 0;
+`;
+
+export const TextOne = styled.h2`
+  font-weight: 300;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+`;
+
+export const TextTwo = styled.h2`
+  font-weight: 300;
+  font-size: 2rem;
+  letter-spacing: 3px;
 `;

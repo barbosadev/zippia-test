@@ -1,13 +1,18 @@
-import { Container } from "./style";
+import { Container, TextOne, TextTwo } from "./style";
 
 interface BannerProps {
-  children: string;
+  textOne: string;
+  textTwo: string;
 }
 
-export const Banner = ({ children }: BannerProps): React.ReactElement => {
+export const Banner = ({
+  textOne,
+  textTwo,
+}: BannerProps): React.ReactElement => {
   return (
     <Container>
-      <h2>{children}</h2>
+      <TextOne>{textOne}</TextOne>
+      <TextTwo>{textTwo}</TextTwo>
     </Container>
   );
 };

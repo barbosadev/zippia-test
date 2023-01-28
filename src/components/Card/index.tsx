@@ -28,12 +28,12 @@ export const Card = ({
   return (
     <Container>
       <Header>
-        <h4>{title}</h4>
+        <h3>{title}</h3>
         <Date>{date}</Date>
       </Header>
-      <h5>{company}</h5>
+      <h4>{company}</h4>
       <Description>
-        <Collapse startingHeight={48} in={showMore}>
+        <Collapse startingHeight={"4rem"} in={showMore}>
           {description}
         </Collapse>
         <LinkArea>

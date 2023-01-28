@@ -17,7 +17,7 @@ export const JobsContent = (): React.ReactElement => {
 
   return (
     <>
-      <Banner>Find your dream job!</Banner>
+      <Banner textOne="We help you" textTwo="find your dream job" />
       <Filters title="Jobs">
         <Button active={isByCompany} onClick={handleIsByCompany}>
           By Company
