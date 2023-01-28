@@ -10,13 +10,23 @@ interface JobsProps {
   jobDescription: string;
 }
 
+interface PayloadProps {
+  companySkills: boolean;
+  dismissedListingHashes: Array<[]>;
+  fetchJobDesc: boolean;
+  jobTitle: string;
+  locations: Array<[]>;
+  numJobs: number;
+  previousListingHashes: Array<[]>;
+}
+
 export function useJobs() {
   const [jobs, setJobs] = useState<JobsProps[]>([]);
   const [isByCompany, setIsByCompany] = useState<Boolean>(false);
   const [onlyLastSevenDays, setOnlyLastSevenDays] = useState<Boolean>(false);
 
   useEffect(() => {
-    const requestPayload = {
+    const requestPayload: PayloadProps = {
       companySkills: true,
       dismissedListingHashes: [],
       fetchJobDesc: true,
