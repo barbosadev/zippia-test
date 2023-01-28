@@ -54,8 +54,9 @@ export function useJobs() {
 
   const newList = (): JobsProps[] => {
     const newJobList = [...jobs];
-    if (isByCompany) return newJobList.sort(sortByCompany);
-    if (onlyLastSevenDays) return newJobList.filter(isLastSevenDays);
+
+    if (isByCompany) newJobList.sort(sortByCompany);
+    if (onlyLastSevenDays) newJobList.filter(isLastSevenDays);
 
     return newJobList;
   };
